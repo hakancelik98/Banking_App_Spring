@@ -55,4 +55,9 @@ public class AccountController {
         accountService.deleteAccount(id);
         return ResponseEntity.ok("Hesap Başarıyla Silindi");
     }
+    @GetMapping("/holder/{holderName}")
+    public ResponseEntity<AccountDto> getAccountByHolderName(@PathVariable String holderName){
+        AccountDto accountDto = accountService.getAccountByHolderName(holderName);
+        return ResponseEntity.ok(accountDto);
+    }
 }

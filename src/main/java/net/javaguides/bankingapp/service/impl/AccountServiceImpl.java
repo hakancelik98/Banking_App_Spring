@@ -83,4 +83,12 @@ public class AccountServiceImpl implements AccountService {
         accountRepository.delete(account);
 
     }
+
+    @Override
+    public AccountDto getAccountByHolderName(String accountHolderName) {
+        Account account = accountRepository
+                .findByAccountHolderName(String.valueOf(accountHolderName))
+                .orElseThrow(() -> new RuntimeException("Account does not exists"));
+        return AccountMapper.mapToAccountDto(account);
+    }
 }
